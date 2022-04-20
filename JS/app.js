@@ -23,12 +23,14 @@ document.getElementById("search-btn").addEventListener("click", function () {
 
 /* =========================     display phone     ========================= */
 const displayPhone = phones => {
+    const phonesLimit = phones.slice(0,20);
     displayPhoneSection.textContent = "";
+    detailSection.textContent = "";
     if (phones.length === 0) {
         displayError();
     }
     else {
-        phones.forEach(phone => {
+        phonesLimit.forEach(phone => {
             const div = document.createElement('div');
             div.classList.add('col')
             div.innerHTML = `
@@ -63,7 +65,7 @@ const loadDetail = (phoneId) => {
 /* =========================     display details      ========================= */
 const displayDetail = (detail) => {
     console.log(detail);
-    detailSection.textContent = ""
+    detailSection.textContent = "";
     const div = document.createElement('div');
     div.classList.add('row');
     div.innerHTML = `
