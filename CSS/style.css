@@ -7,6 +7,9 @@
     height: 400px;
 }
 
+.me-auto{
+    margin-left: auto !important;
+}
 #error-message{
     color: red;
     display: none;
