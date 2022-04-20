@@ -9,7 +9,6 @@ const loadPhone = () => {
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`)
         .then(res => res.json())
         .then(data => displayPhone(data.data))
-        .catch(err => console.log(err));
 }
 
 /* ====================   search btn event handler   ==================== */
@@ -60,7 +59,7 @@ const loadDetail = (phoneId) => {
     fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
         .then(res => res.json())
         .then(data => displayDetail(data.data))
-        .catch(err => handleError(err))
+        .catch(err => handleError())
 }
 
 /* =========================     display details      ========================= */
@@ -79,7 +78,7 @@ const displayDetail = (detail) => {
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title" style="color:#ff4000">${detail.name}</h5>
-                                <h6 style="color:steelBlue">${detail.releaseDate ? detail.releaseDate : 'No result'}</h6>
+                                <h6 style="color:steelBlue">${detail.releaseDate ? detail.releaseDate : 'No release date found'}</h6>
                                 <p class="card-text"><span style="color:red;font-weight:bold">Feature:</span> ${detail.mainFeatures.storage} . ${detail.mainFeatures.chipSet} . ${detail.mainFeatures.displaySize} . ${detail.mainFeatures.memory}</p>
                             </div>
                         </div>
