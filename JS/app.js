@@ -1,5 +1,6 @@
 const displayPhoneSec = document.getElementById("display-phone-area");
 const searchText = document.getElementById("search-box");
+const errorSec = document.getElementById('error-message');
 
 /* =========================      load phone       ========================= */
 const loadPhone = () => {
@@ -7,17 +8,29 @@ const loadPhone = () => {
     fetch(`https://openapi.programming-hero.com/api/phones?search=${searchPhone}`)
         .then(res => res.json())
         .then(data => displayPhone(data.data))
+        .catch(err => console.log(err));
 }
 
 /* ====================   search btn event handler   ==================== */
 document.getElementById("search-btn").addEventListener("click", function () {
-    loadPhone();
+    if (searchText.value !== '') {
+        loadPhone();
+        errorSec.style.display = "none";
+        searchText.value = '';
+    }
 });
 
 /* =========================     display phone     ========================= */
 const displayPhone = phones => {
+    console.log(phones);
+    displayPhoneSec.textContent = "";
+    if(phones.length === 0){
+        displayError();
+    }
+
+   else{
     phones.forEach(phone => {
-        const div = document.createElement('div')
+        const div = document.createElement('div');
         div.classList.add('col')
         div.innerHTML = `
             <div class="card text-center">
@@ -33,6 +46,10 @@ const displayPhone = phones => {
         `;
         displayPhoneSec.appendChild(div)
     });
+   }
 };
 
-/* =========================      load phone       ========================= */
+/* =========================      error message       ========================= */
+const displayError = () =>{
+    errorSec.style.display = 'block';
+}

@@ -14,45 +14,57 @@
 </head>
 
 <body>
+    <!--  =========================     Navbar area      =========================  -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand fs-2 fw-bold brand" href="#">Mobile Reviews</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">iPhone</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Samsung</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Oppo</a>
-                        </li>
-                    </ul>
+            <div class="container-fluid d-flex justify-content-between">
+                <div class="col">
+                    <a class="navbar-brand fs-2 fw-bold brand" href="#">Mobile Reviews</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="col">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">iPhone</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Samsung</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Oppo</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
 
     <main class="my-5">
-        <section class="container w-50">
+        <section class="container w-50 my-5">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search Your Phone" id="search-box">
                 <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
             </div>
+
+            <!-- =========================   error message area   ========================= -->
+            <div id="error-message">
+                <h3>Wrong Input. Enter a valid name...</h3>
+            </div>
         </section>
+
+        <!-- =========================      display phone       ========================= -->
         <section class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4" id="display-phone-area">
-                
+
             </div>
         </section>
     </main>
