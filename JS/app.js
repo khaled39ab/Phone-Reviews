@@ -34,17 +34,17 @@ const displayPhone = phones => {
             const div = document.createElement('div');
             div.classList.add('col')
             div.innerHTML = `
-            <div class="card text-center">
-                <img src="${phone.image}" class="card-img-top mh-50" alt="...">
-                <div class="card-body">
-                <h5 class="card-title">${phone.phone_name}</h5>
-                <p class="card-text">${phone.phone_name} is the most popular brand phone of ${phone.brand} company. To know more feature and details "Explore it"</p>
+                <div class="card text-center">
+                    <img src="${phone.image}" class="card-img-top mh-50" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">${phone.phone_name}</h5>
+                    <p class="card-text">${phone.phone_name} is the most popular brand phone of ${phone.brand} company. To know more feature and details "Explore it"</p>
+                    </div>
+                    <div class="d-flex justify-content-center my-3">
+                        <button class="btn btn-primary w-50" onclick="loadDetail('${phone.slug}')">Explore</button>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-center my-3">
-                    <button class="btn btn-primary w-50" onclick="loadDetail('${phone.slug}')">Explore</button>
-                </div>
-            </div>
-        `;
+            `;
             displayPhoneSection.appendChild(div)
         });
     }
@@ -64,7 +64,6 @@ const loadDetail = (phoneId) => {
 
 /* =========================     display details      ========================= */
 const displayDetail = (detail) => {
-    console.log(detail);
     detailSection.textContent = "";
     const div = document.createElement('div');
     div.classList.add('row');
