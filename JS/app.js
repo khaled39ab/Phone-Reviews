@@ -1,6 +1,7 @@
-const displayPhoneSec = document.getElementById("display-phone-area");
+const displayPhoneSection = document.getElementById("display-phone-area");
 const searchText = document.getElementById("search-box");
-const errorSec = document.getElementById('error-message');
+const errorSection = document.getElementById('error-message');
+const detailSection = document.getElementById('display-detail');
 
 /* =========================      load phone       ========================= */
 const loadPhone = () => {
@@ -15,24 +16,22 @@ const loadPhone = () => {
 document.getElementById("search-btn").addEventListener("click", function () {
     if (searchText.value !== '') {
         loadPhone();
-        errorSec.style.display = "none";
+        errorSection.style.display = "none";
         searchText.value = '';
     }
 });
 
 /* =========================     display phone     ========================= */
 const displayPhone = phones => {
-    console.log(phones);
-    displayPhoneSec.textContent = "";
-    if(phones.length === 0){
+    displayPhoneSection.textContent = "";
+    if (phones.length === 0) {
         displayError();
     }
-
-   else{
-    phones.forEach(phone => {
-        const div = document.createElement('div');
-        div.classList.add('col')
-        div.innerHTML = `
+    else {
+        phones.forEach(phone => {
+            const div = document.createElement('div');
+            div.classList.add('col')
+            div.innerHTML = `
             <div class="card text-center">
                 <img src="${phone.image}" class="card-img-top mh-50" alt="...">
                 <div class="card-body">
@@ -40,16 +39,46 @@ const displayPhone = phones => {
                 <p class="card-text">${phone.phone_name} is the most popular brand phone of ${phone.brand} company. To know more feature and details "Explore it"</p>
                 </div>
                 <div class="d-flex justify-content-center my-3">
-                    <button class="btn btn-primary w-50">Explore</button>
+                    <button class="btn btn-primary w-50" onclick="loadDetail('${phone.slug}')">Explore</button>
                 </div>
             </div>
         `;
-        displayPhoneSec.appendChild(div)
-    });
-   }
+            displayPhoneSection.appendChild(div)
+        });
+    }
 };
 
 /* =========================      error message       ========================= */
-const displayError = () =>{
-    errorSec.style.display = 'block';
+const displayError = () => {
+    errorSection.style.display = 'block';
+}
+
+/* =========================     load details      ========================= */
+const loadDetail = (phoneId) => {
+    fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
+        .then(res => res.json())
+        .then(data => displayDetail(data.data))
+}
+
+/* =========================     display details      ========================= */
+const displayDetail = (detail) => {
+    const div = document.createElement('div');
+    div.classList.add('row');
+    div.innerHTML = `
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="${detail.image}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    detailSection.appendChild(div)
 }

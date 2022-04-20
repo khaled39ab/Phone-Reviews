@@ -14,8 +14,8 @@
 </head>
 
 <body>
-    <!--  =========================     Navbar area      =========================  -->
     <header>
+        <!--  =======================     Navbar area      =======================  -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid d-flex justify-content-between">
                 <div class="col">
@@ -50,19 +50,25 @@
 
     <main class="my-5">
         <section class="container w-50 my-5">
+            <!-- =========================   search area   ========================= -->
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search Your Phone" id="search-box">
                 <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
             </div>
 
-            <!-- =========================   error message area   ========================= -->
+            <!-- =======================   error message area   ======================= -->
             <div id="error-message">
-                <h3>Wrong Input. Enter a valid name...</h3>
+                <h3>No match found. Please Try with different name...</h3>
             </div>
         </section>
 
-        <!-- =========================      display phone       ========================= -->
         <section class="container">
+            <!-- ====================    display phone detail    ==================== -->
+            <div id="display-detail">
+                
+            </div>
+
+            <!-- ======================    display phone     ======================= -->
             <div class="row row-cols-1 row-cols-md-3 g-4" id="display-phone-area">
 
             </div>
