@@ -41,7 +41,7 @@ const displayPhone = phones => {
                     <p class="card-text">${phone.phone_name} is the most popular brand phone of ${phone.brand} company. To know more feature and details "Explore it"</p>
                     </div>
                     <div class="d-flex justify-content-center my-3">
-                        <button class="btn btn-primary w-50" onclick="loadDetail('${phone.slug}')">Explore</button>
+                        <a href="#display-detail" class="btn btn-primary w-50" onclick="loadDetail('${phone.slug}')">Explore</a>
                     </div>
                 </div>
             `;
@@ -60,6 +60,7 @@ const loadDetail = (phoneId) => {
     fetch(`https://openapi.programming-hero.com/api/phone/${phoneId}`)
         .then(res => res.json())
         .then(data => displayDetail(data.data))
+        .catch(err => handleError(err))
 }
 
 /* =========================     display details      ========================= */
@@ -97,4 +98,10 @@ const displayDetail = (detail) => {
         </div>
     `;
     detailSection.appendChild(div)
+};
+
+const handleError = () =>{
+    detailSection.innerHTML = `
+        <h3 style="color:red; text-align:center;">Oops, sorry... No data found</h3>
+    `
 }

@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 #search-btn{
     color: white;
     background-color: rgb(231, 103, 197);
@@ -10,6 +13,7 @@
 .me-auto{
     margin-left: auto !important;
 }
+
 #error-message{
     color: red;
     display: none;
