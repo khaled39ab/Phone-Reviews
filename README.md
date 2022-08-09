@@ -6,3 +6,4 @@
 * Here is a input field to search phone and phone's model.
 * After searching match phone wil display with a button explore.
 * Explore button will display phone's features.
+* Trying to make responsive.
